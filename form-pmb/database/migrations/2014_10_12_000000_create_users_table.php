@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('nisn')->unique();
             $table->timestamp('nisn_verified_at')->nullable();
-            $table->date('tl');
+            $table->string('tl');
             $table->rememberToken();
             $table->timestamps();
         });
