@@ -24,8 +24,12 @@ return new class extends Migration
             $table->integer('no_kk');
             $table->string('email')->unique();
             $table->string('status');
-            $table->integer('no_wa')->unique();
+            $table->string('no_wa')->unique();
             $table->string('kewarganegaraan');
+            $table->unsignedBigInteger('jurusan_id');
+            $table->foreign('jurusan_id')->references('id')->on('jurusan');
+            $table->unsignedBigInteger('jurusan2_id');
+            $table->foreign('jurusan2_id')->references('id')->on('jurusan');
             $table->timestamps();
         });
     }

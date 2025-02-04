@@ -28,7 +28,7 @@ return new class extends Migration
             $table->integer('penghasilan_ibu');
             $table->string('no_wa_ibu')->unique();
             $table->string('alamat_ortu');
-            $table->integer('iPribadi_id');
+            $table->unsignedBigInteger('iPribadi_id');
             $table->foreign('iPribadi_id')->references('id')->on('i_pribadi');
             $table->timestamps();
         });

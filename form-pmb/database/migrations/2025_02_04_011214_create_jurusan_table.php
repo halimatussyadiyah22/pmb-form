@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('i_wali', function (Blueprint $table) {
+        Schema::create('jurusan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_sekolah');
-            $table->string('alamat_wali');
-            $table->string('pekerjaan');
-            $table->string('no_wa')->unique();
-            $table->integer('iPribadi_id');
-            $table->foreign('iPribadi_id')->references('id')->on('i_pribadi');
+            $table->string('nama_jurusan');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('i_wali');
+        Schema::dropIfExists('jurusan');
     }
 };

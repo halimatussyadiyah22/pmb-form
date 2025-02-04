@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('alamat_sekolah');
             $table->integer('tahun_lulus');
             $table->string('no_ijazah')->unique();
-            $table->integer('iPribadi_id');
+            $table->unsignedBigInteger('iPribadi_id');
             $table->foreign('iPribadi_id')->references('id')->on('i_pribadi');
             $table->timestamps();
         });
