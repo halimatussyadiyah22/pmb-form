@@ -10,15 +10,16 @@
 <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
     <div class="row w-75">
         <div class="col-md-5 bg-primary text-white p-4 rounded-start">
-            <h2>Welcome</h2>
-            <p>You are 30 seconds away from earning your own money!</p>
-            <button class="btn btn-light w-100">Login</button>
+            <h2>PMB</h2>
+            <p>Sekolah Tinggi Teknologi Indonesia</p>
+            <a href="/login"><button  class="btn btn-light w-100" >Login</button></a>
+            
         </div>
         <div class="col-md-7 bg-light p-4 rounded-end shadow">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-            <img class="m-4" src="{{ asset('storage/internal/stti.png') }}" alt="logo" style="width: 50px; height: auto;" >
+            <div class="d-flex justify-content-center align-items-center mb-3 ">
+            <img class="mr-3" src="{{ asset('storage/internal/stti.png') }}" alt="logo" style="width: 50px; height: auto; " >
 
-                <h5>Sekolah Tinggi Teknologi Indonesia</h5>
+                <h1 class="text-blue">STTI</h1>
                 </div>
             
             <form action="/register" method="POST">

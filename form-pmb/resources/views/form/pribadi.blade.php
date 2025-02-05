@@ -1,0 +1,212 @@
+@extends('master')
+@section('title')
+Formulir Data Pribadi
+@endsection
+@section('content')
+{{-- <div class="containerjustify-content-center align-items-center" style="height: 100vh;"> --}}
+    {{-- <div class="mt-7 mb-7 col-9 bg-light p-4 rounded-end shadow"> --}}
+        {{-- <div class="d-flex justify-content-center align-items-center mb-3">
+            <img class="mr-3" src="{{ asset('storage/internal/stti.png') }}" alt="logo" style="width: 50px; height: auto;">
+            <h1 style="color: #008DD4">STTI</h1>
+        </div>
+        <div class="d-flex justify-content-center align-items-center mb-3">
+            <h3  style="color: #315b75">Formulir Data Pribadi</h3>
+        </div> --}}
+        
+        {{-- @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif --}}
+        
+        <form action="/pribadi" method="POST">
+            @csrf
+
+            <div class="mb-4">
+                <label>Nama Lengkap :</label><br>
+                <input type="text" name="nama_lengkap" class="form-control @error('nama_lengkap') is-invalid @enderror" placeholder="Nama Lengkap" value="{{ old('nama_lengkap') }}">
+                @error('nama_lengkap')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            
+            <div class="mb-3">
+                <label>Gelombang :</label><br>
+                <select name="gelombang" class="form-control @error('gelombang') is-invalid @enderror">
+                    <option value="" disabled selected>Pilih Gelombang</option>
+                    <option value="1" {{ old('gelombang') == '1' ? 'selected' : '' }}>1</option>
+                    <option value="2" {{ old('gelombang') == '2' ? 'selected' : '' }}>2</option>
+                </select>
+                @error('gelombang')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Tempat Lahir :</label><br>
+                <input type="text" name="tempat_lahir" class="form-control @error('tempat_lahir') is-invalid @enderror" placeholder="Tempat Lahir" value="{{ old('tempat_lahir') }}" >
+                @error('tempat_lahir')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Jalan / Dusun : </label><br>
+                <input type="text" name="jalan_dusun" class="form-control @error('jalan_dusun') is-invalid @enderror" placeholder="Jalan/Dusun" value="{{ old('jalan_dusun') }}" >
+                @error('jalan_dusun')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Desa Kelurahan :</label><br>
+                <input type="text" name="desa_kelurahan" class="form-control @error('desa_kelurahan') is-invalid @enderror" placeholder="Desa/Kelurahan" value="{{ old('desa_kelurahan') }}" >
+                @error('desa_kelurahan')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label>RT :</label><br>
+                    <input type="text" name="rt" class="form-control @error('rt') is-invalid @enderror" placeholder="RT" value="{{ old('rt') }}" >
+                    @error('rt')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-md-6">
+                    <label>RW :</label><br>
+                    <input type="text" name="rw" class="form-control @error('rw') is-invalid @enderror" placeholder="RW" value="{{ old('rw') }}" >
+                    @error('rw')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label>Kecamatan 
+                <input type="text" name="kecamatan" class="form-control @error('kecamatan') is-invalid @enderror" placeholder="Kecamatan" value="{{ old('kecamatan') }}" >
+                @error('kecamatan')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Kabupaten :</label><br>
+                <input type="text" name="kabupaten" class="form-control @error('kabupaten') is-invalid @enderror" placeholder="Kabupaten" value="{{ old('kabupaten') }}" >
+                @error('kabupaten')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>provinsi :</label><br>
+                <input type="text" name="provinsi" class="form-control @error('provinsi') is-invalid @enderror" placeholder="Provinsi" value="{{ old('provinsi') }}" >
+                @error('provinsi')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Agama :</label><br>
+
+                <input type="text" name="agama" class="form-control @error('agama') is-invalid @enderror" placeholder="Agama" value="{{ old('agama') }}" >
+                @error('agama')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Nomer Kartu Keluarga (KK) :</label><br>
+                <input type="text" name="no_kk" class="form-control @error('no_kk') is-invalid @enderror" placeholder="Nomor Kartu Keluarga (KK)" value="{{ old('no_kk') }}"  minlength="16" maxlength="16">
+                @error('no_kk')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Email :</label><br>
+                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" >
+                @error('email')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Status :</label><br>
+                <input type="text" name="status" class="form-control @error('status') is-invalid @enderror" placeholder="Status" value="{{ old('status') }}" >
+                @error('status')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Golongan Darah :</label><br>
+                <select name="golongan_darah" class="form-control @error('golongan_darah') is-invalid @enderror">
+                    <option value="" disabled selected>Pilih Golongan Darah</option>
+                    <option value="A" {{ old('golongan_darah') == 'A' ? 'selected' : '' }}>A</option>
+                    <option value="B" {{ old('golongan_darah') == 'B' ? 'selected' : '' }}>B</option>
+                    <option value="AB" {{ old('golongan_darah') == 'AB' ? 'selected' : '' }}>AB</option>
+                    <option value="O" {{ old('golongan_darah') == 'O' ? 'selected' : '' }}>O</option>
+                </select>
+                @error('golongan_darah')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            
+
+            <div class="mb-3">
+                <label>Agama :</label><br>
+                <input type="text" name="no_wa" class="form-control @error('no_wa') is-invalid @enderror" placeholder="Nomor WhatsApp" value="{{ old('no_wa') }}"  maxlength="13">
+                @error('no_wa')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Kewarganegaraan :</label><br>
+                <input type="text" name="kewarganegaraan" class="form-control @error('kewarganegaraan') is-invalid @enderror" placeholder="Kewarganegaraan" value="{{ old('kewarganegaraan') }}" >
+                @error('kewarganegaraan')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Jurusan Pilihan 1 :</label><br>
+                <select name="jurusan1_id" class="form-control @error('jurusan1_id') is-invalid @enderror">
+                    <option value="" disabled selected>Pilih Jurusan Pilihan 2</option>
+                    @foreach ($jurusanList as $jurusan)
+                        <option value="{{ $jurusan->id }}" {{ old('jurusan1_id') == $jurusan->id ? 'selected' : '' }}>
+                            {{ $jurusan->nama_jurusan }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-5">
+                <label>Jurusan Pilihan 1 :</label><br>
+                <select name="jurusan2_id" class="form-control @error('jurusan2_id') is-invalid @enderror">
+                    <option value="" disabled selected>Pilih Jurusan Pilihan 2</option>
+                    @foreach ($jurusanList2 as $jurusan)
+                        <option value="{{ $jurusan->id }}" {{ old('jurusan2_id') == $jurusan->id ? 'selected' : '' }}>
+                            {{ $jurusan->nama_jurusan }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-md-5">
+                    <button type="submit" class="btn btn-primary w-100">Next</button>
+                </div>
+            </div>
+            
+        </form>
+
+{{-- </div> --}}
+{{-- </div> --}}
+
+@endsection
