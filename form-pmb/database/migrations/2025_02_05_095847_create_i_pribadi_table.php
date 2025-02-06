@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('i_pribadi', function (Blueprint $table) {
             $table->id();
-            $table->integer('no_register')->unique();
+            $table->bigInteger('no_register')->unique();
             $table->string('nama_lengkap');
             $table->integer('gelombang');
             $table->string('tempat_lahir');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('kabupaten');
             $table->string('provinsi');
             $table->string('agama');
-            $table->integer('no_kk');
+            $table->bigInteger('no_kk');
             $table->string('email')->unique();
             $table->string('status');
             $table->string('golongan_darah');
@@ -35,6 +35,8 @@ return new class extends Migration
             $table->foreign('jurusan_id')->references('id')->on('jurusan')->onDelete('restrict');
             $table->unsignedBigInteger('jurusan2_id');
             $table->foreign('jurusan2_id')->references('id')->on('jurusan2')->onDelete('restrict');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('jurusan2')->onDelete('restrict');
             $table->timestamps();
 
         });

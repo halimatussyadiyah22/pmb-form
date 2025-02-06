@@ -30,7 +30,7 @@ class Pribadi extends Model
         'golongan_darah',
         'no_wa',
         'kewarganegaraan',
-        'jurusan1_id',
+        'jurusan_id',
         'jurusan2_id'
     ];
     public function user(){

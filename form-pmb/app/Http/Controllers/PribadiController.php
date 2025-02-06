@@ -34,8 +34,7 @@ class PribadiController extends Controller
             'golongan_darah'=>'required',
             'no_wa'=>'required|max:13',
             'kewarganegaraan'=>'required',
-            'jurusan1_id'=>'required',
-            'jurusan2_id'=>'required',
+            
         ]);
         $tahun_akademik = "2425"; 
     $gelombang = str_pad($request->gelombang, 2, '0', STR_PAD_LEFT);
@@ -71,7 +70,7 @@ class PribadiController extends Controller
             'no_wa'=>$request['no_wa'],
             'kewarganegaraan'=>$request['kewarganegaraan'],
             'no_register' => $no_register,
-            'jurusan1_id'=>$request['jurusan1_id'],
+            'jurusan_id'=>$request['jurusan1_id'],
             'jurusan2_id'=>$request['jurusan2_id'],
         ]);
         return redirect('/');
