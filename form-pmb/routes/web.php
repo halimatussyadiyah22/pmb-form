@@ -26,5 +26,9 @@ Route::post('/register',[RegisterController::class,'store'])->middleware('guest'
 Route::get('/login',[LoginController::class,'loginForm'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class,'authenticate'])->middleware('guest');
 Route::post('/logout',LogoutController::class)->middleware('auth');
-Route::get('/pribadi',[PribadiController::class,'create']);
-Route::post('/pribadi',[PribadiController::class,'store']);
+Route::get('/pribadi/mine',[PribadiController::class,'mine']);
+
+Route::middleware('auth')->group(function () {
+    Route::resource('pribadi',PribadiController::class);
+
+});

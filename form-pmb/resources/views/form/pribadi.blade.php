@@ -13,15 +13,11 @@ Formulir Data Pribadi
             <h3  style="color: #315b75">Formulir Data Pribadi</h3>
         </div> --}}
         
-        {{-- @if ($errors->any())
+        @if(session('error'))
             <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+                {{ session('error') }}
             </div>
-        @endif --}}
+        @endif
         
         <form action="/pribadi" method="POST">
             @csrf

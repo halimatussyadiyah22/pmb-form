@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('pekerjaan_ayah');
             $table->integer('penghasilan_ayah');
             $table->string('no_wa_ayah')->unique();
+            $table->string('alamat_ayah');
             $table->string('nama_ibu');
             $table->integer('umur_ibu');
             $table->string('pendidikan_ibu');
@@ -27,9 +28,9 @@ return new class extends Migration
             $table->string('pekerjaan_ibu');
             $table->integer('penghasilan_ibu');
             $table->string('no_wa_ibu')->unique();
-            $table->string('alamat_ortu');
-            $table->unsignedBigInteger('iPribadi_id');
-            $table->foreign('iPribadi_id')->references('id')->on('i_pribadi');
+            $table->string('alamat_ibu');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
 
         });

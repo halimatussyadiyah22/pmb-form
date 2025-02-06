@@ -35,8 +35,8 @@ return new class extends Migration
             $table->foreign('jurusan_id')->references('id')->on('jurusan')->onDelete('restrict');
             $table->unsignedBigInteger('jurusan2_id');
             $table->foreign('jurusan2_id')->references('id')->on('jurusan2')->onDelete('restrict');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('jurusan2')->onDelete('restrict');
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->timestamps();
 
         });

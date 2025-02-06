@@ -14,6 +14,7 @@ class PribadiController extends Controller
         $jurusanList2 = Jurusan2::all();
         return view('form.pribadi',compact('jurusanList','jurusanList2'));
     }
+    
     public function store(Request $request){
         
         $request->validate([
@@ -34,7 +35,7 @@ class PribadiController extends Controller
             'golongan_darah'=>'required',
             'no_wa'=>'required|max:13',
             'kewarganegaraan'=>'required',
-            
+            'user_id'=>'unique'
         ]);
         $tahun_akademik = "2425"; 
     $gelombang = str_pad($request->gelombang, 2, '0', STR_PAD_LEFT);
@@ -47,7 +48,11 @@ class PribadiController extends Controller
         ->count() + 1;
 
     $no_urut = str_pad($count, 3, '0', STR_PAD_LEFT);
+    $existingPribadi = Pribadi::where('user_id', auth()->id())->first();
 
+    if ($existingPribadi) {
+        return redirect()->back()->with('error', 'Anda sudah memiliki data pribadi.');
+    }
     // Format no_register
     $no_register = "{$tahun_akademik}{$gelombang}{$bulan}{$no_urut}";
 
@@ -72,7 +77,61 @@ class PribadiController extends Controller
             'no_register' => $no_register,
             'jurusan_id'=>$request['jurusan1_id'],
             'jurusan2_id'=>$request['jurusan2_id'],
+            'user_id'=>auth()->id()
+
         ]);
         return redirect('/');
     }
+    public function mine(Request $request)
+    {
+        $jurusan = Jurusan::all();
+        $jurusan2 = Jurusan2::all();
+        $pribadi = Pribadi::query()
+            ->with('user:id,name')
+            ->where('user_id',$request->user()->id)
+            ->first();
+        return view('mine.pribadi',[
+            'pribadi' => $pribadi, 'jurusan'=>$jurusan,'jurusan2'=>$jurusan2
+        ]);
+    }
+    public function update(Request $request, $id)
+    {
+        $pribadi = Pribadi::find($id);
+        
+        if ($pribadi) {
+            $pribadi->update($request->all()); 
+            return redirect()->back()->with('success', 'Data pribadi berhasil diperbarui.');
+
+        }
+        
+        return redirect()->back()->with('error', 'Data pribadi tidak ditemukan.');
+    }
+public function list(){
+
+}
+
+public function index()
+{
+
+}
+
+
+public function show(Pribadi $store)
+{
+
+}
+
+
+
+
+
+/**
+ * Remove the specified resource from storage.
+ */
+public function destroy(Store $store)
+{
+    //
+}
+
+
 }

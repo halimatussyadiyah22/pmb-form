@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Jurusan;
+use App\Models\Jurusan2;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pribadi extends Model
 {
@@ -31,15 +33,16 @@ class Pribadi extends Model
         'no_wa',
         'kewarganegaraan',
         'jurusan_id',
-        'jurusan2_id'
+        'jurusan2_id',
+        'user_id'
     ];
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function jurusan1():hasMany{
+    public function jurusan():HasMany{
         return $this->hasMany(Jurusan::class);
     }
-    public function jurusan2():hasMany{
-        return $this->hasMany(Jurusan::class);
+    public function jurusan2():HasMany{
+        return $this->hasMany(Jurusan2::class);
     }
 }

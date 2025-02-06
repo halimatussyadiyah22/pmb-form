@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('alamat_wali');
             $table->string('pekerjaan');
             $table->string('no_wa')->unique();
-            $table->unsignedBigInteger('iPribadi_id');
-            $table->foreign('iPribadi_id')->references('id')->on('i_pribadi');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
