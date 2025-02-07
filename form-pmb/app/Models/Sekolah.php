@@ -4,18 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
-class Wali extends Model
+class Sekolah extends Model
 {
     use HasFactory;
-    protected $table = 'i_wali';
+    protected $table = 'i_sekolah';
 
     protected $fillable=[
-        'nama_wali',
-        'alamat_wali',
-        'pekerjaan',
-        'no_wa',
-        'user_id'
+        'nama_sekolah',
+        'jurusan',
+        'alamat_sekolah',
+        'tahun_lulus',
+        'no_ijazah',
+        'user_id',
     ];
     public function user(){
         return $this->belongsTo(User::class);

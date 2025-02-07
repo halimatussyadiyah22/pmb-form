@@ -45,7 +45,7 @@ class WaliController extends Controller
             ->with('user:id,name')
             ->where('user_id',$request->user()->id)
             ->first();
-        return view('mine.Wali',[
+        return view('mine.wali',[
             'wali' => $wali
         ]);
     }

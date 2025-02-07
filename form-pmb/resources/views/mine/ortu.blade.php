@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-<div>{{ $pribadi->nama_lengkap }} - {{ $pribadi->no_register }}</div>
+Identitas Orangtua
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
         @endif
 
         <!-- Form untuk Edit Data Pribadi -->
-        <form action="/pribadi/{{$pribadi->id}}" method="POST">
+        <form action="/ortu/{{$ortu->id}}" method="POST">
             @csrf
             @method('PUT')
             

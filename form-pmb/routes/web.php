@@ -6,6 +6,9 @@ use App\Http\Controllers\OrtuController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PribadiController;
 use App\Http\Controllers\WaliController;
+use App\Http\Controllers\SekolahController;
+use App\Http\Controllers\DokumenController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,13 +30,19 @@ Route::post('/register',[RegisterController::class,'store'])->middleware('guest'
 Route::get('/login',[LoginController::class,'loginForm'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class,'authenticate'])->middleware('guest');
 Route::post('/logout',LogoutController::class)->middleware('auth');
-Route::get('/pribadi/mine',[PribadiController::class,'mine']);
-Route::get('/ortu/mine',[OrtuController::class,'mine']);
-Route::get('/wali/mine',[WaliController::class,'mine']);
+
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dokumen/mine',[DokumenController::class,'mine']);
+    Route::get('/ortu/mine',[OrtuController::class,'mine']);
+    Route::get('/pribadi/mine',[PribadiController::class,'mine']);
+    Route::get('/wali/mine',[WaliController::class,'mine']);
+    Route::get('/sekolah/mine',[SekolahController::class,'mine']);
     Route::resource('pribadi',PribadiController::class);
     Route::resource('ortu',OrtuController::class);
     Route::resource('wali',WaliController::class);
+    Route::resource('sekolah',SekolahController::class);
+    Route::resource('dokumen',DokumenController::class);
+    
 
 });

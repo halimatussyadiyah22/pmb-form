@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-<div>{{ $pribadi->nama_lengkap }} - {{ $pribadi->no_register }}</div>
+Identitas Pribadi
 @endsection
 
 @section('content')
