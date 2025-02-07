@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ortu;
+use App\Models\User;
 
 class OrtuController extends Controller
 {
@@ -20,17 +22,16 @@ class OrtuController extends Controller
             'status_ayah'=>'required',
             'pekerjaan_ayah'=>'required',
             'penghasilan_ayah'=>'required',
-            'no_wa_ayah'=>'required|unique',
+            'no_wa_ayah'=>'required',
             'alamat_ayah'=>'required',
             'nama_ibu'=>'required',
             'umur_ibu'=>'required',
-            'pendidikan_ibu'=>'required|min:16|max:16',
-            'status_ibu'=>'required|email',
+            'pendidikan_ibu'=>'required',
+            'status_ibu'=>'required',
             'pekerjaan_ibu'=>'required',
-            'penghasilan_ayah'=>'required',
-            'no_wa_ayah'=>'required|max:13',
-            'alamat_ayah'=>'required',
-            'user_id'=>'unique'
+            'penghasilan_ibu'=>'required',
+            'no_wa_ibu'=>'required',
+            'alamat_ibu'=>'required',
         ]);
         
     $existingOrtu = Ortu::where('user_id', auth()->id())->first();
@@ -54,22 +55,22 @@ class OrtuController extends Controller
             'umur_ibu'=>$request['umur_ibu'],
             'status_ibu'=>$request['status_ibu'],
             'pekerjaan_ibu'=>$request['pekerjaan_ibu'],
-            'penghasilan_ayah'=>$request['penghasilan_ayah'],
-            'alamat_ayah'=>$request['alamat_ayah'],
+            'penghasilan_ibu'=>$request['penghasilan_ayah'],
+            'alamat_ibu'=>$request['alamat_ayah'],
+            'no_wa_ibu'=>$request['no_wa_ibu'],
             'user_id'=>auth()->id()
-
         ]);
         return redirect('/');
     }
     public function mine(Request $request)
     {
             
-        $Ortu = Ortu::query()
+        $ortu = Ortu::query()
             ->with('user:id,name')
             ->where('user_id',$request->user()->id)
             ->first();
         return view('mine.ortu',[
-            'ortu' => $ortu, 'jurusan'=>$jurusan,'jurusan2'=>$jurusan2
+            'ortu' => $ortu
         ]);
     }
     public function update(Request $request, $id)

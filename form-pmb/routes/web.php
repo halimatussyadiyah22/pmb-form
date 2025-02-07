@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\OrtuController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PribadiController;
-
+use App\Http\Controllers\WaliController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,8 +28,12 @@ Route::get('/login',[LoginController::class,'loginForm'])->name('login')->middle
 Route::post('/login',[LoginController::class,'authenticate'])->middleware('guest');
 Route::post('/logout',LogoutController::class)->middleware('auth');
 Route::get('/pribadi/mine',[PribadiController::class,'mine']);
+Route::get('/ortu/mine',[OrtuController::class,'mine']);
+Route::get('/wali/mine',[WaliController::class,'mine']);
 
 Route::middleware('auth')->group(function () {
     Route::resource('pribadi',PribadiController::class);
+    Route::resource('ortu',OrtuController::class);
+    Route::resource('wali',WaliController::class);
 
 });
