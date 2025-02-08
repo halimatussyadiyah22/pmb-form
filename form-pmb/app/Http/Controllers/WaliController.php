@@ -36,7 +36,7 @@ class WaliController extends Controller
             'no_wa'=>$request['no_wa'],
             'user_id'=>auth()->id()
         ]);
-        return redirect('/');
+        return redirect('/wali/mine');
     }
     public function mine(Request $request)
     {

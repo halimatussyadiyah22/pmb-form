@@ -12,14 +12,13 @@
         <div class="col-md-5 bg-primary text-white p-4 rounded-start">
             <h2>PMB</h2>
             <p>Sekolah Tinggi Teknologi Indonesia</p>
-            <a href="/login"><button  class="btn btn-light w-100" >Login</button></a>
             
         </div>
         <div class="col-md-7 bg-light p-4 rounded-end shadow">
             <div class="d-flex justify-content-center align-items-center mb-3 ">
             <img class="mr-3" src="{{ asset('storage/internal/stti.png') }}" alt="logo" style="width: 50px; height: auto; " >
 
-                <h1 class="text-blue">STTI</h1>
+                <h1 class="text-blue">Daftar Akun</h1>
                 </div>
             
             <form action="/register" method="POST">
@@ -42,7 +41,9 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Register</button>
+                <button type="submit" class="btn mb-3 btn-primary w-100">Register</button>
+                <a href="/login">Sudah punya akun?</a>
+
             </form>
         </div>
     </div>

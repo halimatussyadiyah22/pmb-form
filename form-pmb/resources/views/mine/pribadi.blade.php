@@ -23,87 +23,33 @@ Identitas Pribadi
             @csrf
             @method('PUT')
             
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="gelombang"><strong>Gelombang:</strong></label>
-                    <input type="text" class="form-control" name="gelombang" id="gelombang" value="{{ $pribadi->gelombang }}">
-                </div>
-                <div class="form-group">
-                    <label for="tempat_lahir"><strong>Tempat Lahir:</strong></label>
-                    <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" value="{{ $pribadi->tempat_lahir }}">
-                </div>
-                <div class="form-group">
-                    <label for="alamat"><strong>Alamat:</strong></label>
-                    <input type="text" class="form-control" name="alamat" id="alamat" value="{{ $pribadi->jalan_dusun }}">
-                </div>
-                <div class="form-group">
-                    <label for="desa_kelurahan"><strong>Kelurahan/Desa :</strong></label>
-                    <input type="text" class="form-control" name="desa_kelurahan" id="kecamatan" value="{{ $pribadi->desa_kelurahan }}">
-                </div>
-                <div class="form-group">
-                    <label for="rt"><strong>RT:</strong></label>
-                    <input type="number" class="form-control" name="rt" id="rt" value="{{ $pribadi->rt }}">
-                </div>
-                <div class="form-group">
-                    <label for="rw"><strong>RW:</strong></label>
-                    <input type="number" class="form-control" name="rw" id="rw" value="{{ $pribadi->rw }}">
-                </div>
-                <div class="form-group">
-                    <label for="kecamatan"><strong>Kecamatan:</strong></label>
-                    <input type="text" class="form-control" name="kecamatan" id="kecamatan" value="{{ $pribadi->kecamatan }}">
-                </div>
-                <div class="form-group">
-                    <label for="kabupaten"><strong>Kabupaten:</strong></label>
-                    <input type="text" class="form-control" name="kabupaten" id="kabupaten" value="{{ $pribadi->kabupaten }}">
-                </div>
-                <div class="form-group">
-                    <label for="provinsi"><strong>Provinsi:</strong></label>
-                    <input type="text" class="form-control" name="provinsi" id="provinsi" value="{{ $pribadi->provinsi }}">
-                </div>
-                <div class="form-group">
-                    <label for="agama"><strong>Agama:</strong></label>
-                    <input type="text" class="form-control" name="agama" id="agama" value="{{ $pribadi->agama }}">
-                </div>
-                <div class="form-group">
-                    <label for="no_kk"><strong>No KK:</strong></label>
-                    <input type="text" class="form-control" name="no_kk" id="no_kk" value="{{ $pribadi->no_kk }}">
-                </div>
-                <div class="form-group">
-                    <label for="email"><strong>Email:</strong></label>
-                    <input type="email" class="form-control" name="email" id="email" value="{{ $pribadi->email }}">
-                </div>
-                <div class="form-group">
-                    <label for="no_wa"><strong>No WA:</strong></label>
-                    <input type="text" class="form-control" name="no_wa" id="no_wa" value="{{ $pribadi->no_wa }}">
-                </div>
-                <div class="form-group">
-                    <label for="kewarganegaraan"><strong>Kewarganegaraan:</strong></label>
-                    <input type="text" class="form-control" name="kewarganegaraan" id="kewarganegaraan" value="{{ $pribadi->kewarganegaraan }}">
-                </div>
-                <div class="form-group">
-                    <label for="jurusan1"><strong>Jurusan 1:</strong></label>
-                    <!-- Pastikan relasi dengan model jurusan sudah benar -->
-                    <select class="form-control" name="jurusan_id" id="jurusan_id">
-                        @foreach($jurusan as $jurusanItem)
-                            <option value="{{ $jurusanItem->id }}" {{ $pribadi->jurusan_id == $jurusanItem->id ? 'selected' : '' }}>
-                                {{ $jurusanItem->nama_jurusan }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="jurusan1"><strong>Jurusan 1:</strong></label>
-                    <!-- Pastikan relasi dengan model jurusan sudah benar -->
-                    <select class="form-control" name="jurusan_id" id="jurusan_id">
-                        @foreach($jurusan2 as $jurusanItem)
-                            <option value="{{ $jurusanItem->id }}" {{ $pribadi->jurusan_id == $jurusanItem->id ? 'selected' : '' }}>
-                                {{ $jurusanItem->nama_jurusan }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
+            <div class="mb-4">
+        <label for="nama" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+        <input type="text" id="nama" name="nama" class="mt-1 p-2 w-full border rounded-lg focus:ring focus:ring-blue-300" required>
+    </div>
+    
+    <div class="mb-4">
+        <label for="nik" class="block text-sm font-medium text-gray-700">NIK</label>
+        <input type="text" id="nik" name="nik" class="mt-1 p-2 w-full border rounded-lg focus:ring focus:ring-blue-300" required>
+    </div>
+    
+    <div class="mb-4">
+        <label for="tanggal_lahir" class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
+        <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="mt-1 p-2 w-full border rounded-lg focus:ring focus:ring-blue-300" required>
+    </div>
+    
+    <div class="mb-4">
+        <label for="alamat" class="block text-sm font-medium text-gray-700">Alamat</label>
+        <textarea id="alamat" name="alamat" rows="3" class="mt-1 p-2 w-full border rounded-lg focus:ring focus:ring-blue-300" required></textarea>
+    </div>
+    
+    <div class="mb-4">
+        <label for="jenis_kelamin" class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
+        <select id="jenis_kelamin" name="jenis_kelamin" class="mt-1 p-2 w-full border rounded-lg focus:ring focus:ring-blue-300">
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+        </select>
+    </div>
             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
         </form>
     @endif

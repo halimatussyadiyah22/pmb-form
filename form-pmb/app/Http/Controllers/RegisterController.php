@@ -22,7 +22,7 @@ class RegisterController extends Controller
             "nisn" => $request["nisn"],
             "tl"=>$request["tl"]
         ]);
-        return redirect('/');
+        return redirect('/login');
     }
 
 }

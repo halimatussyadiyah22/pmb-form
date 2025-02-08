@@ -60,7 +60,7 @@ class OrtuController extends Controller
             'no_wa_ibu'=>$request['no_wa_ibu'],
             'user_id'=>auth()->id()
         ]);
-        return redirect('/');
+        return redirect('/ortu/mine');
     }
     public function mine(Request $request)
     {

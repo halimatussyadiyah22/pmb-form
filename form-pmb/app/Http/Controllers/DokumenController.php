@@ -49,7 +49,7 @@ class DokumenController extends Controller
             'transkip_nilai'=>$transkip_nilai->hashName(),
             'user_id'=>auth()->id()
         ]);
-        return redirect('/');
+        return redirect('/dokumen/mine');
     }
     public function mine(Request $request)
     {

@@ -40,7 +40,7 @@ class SekolahController extends Controller
             'no_ijazah'=>$request['no_ijazah'],
             'user_id'=>auth()->id()
         ]);
-        return redirect('/');
+        return redirect('/sekolah/mine');
     }
     public function mine(Request $request)
     {

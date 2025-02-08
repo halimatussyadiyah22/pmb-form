@@ -80,7 +80,7 @@ class PribadiController extends Controller
             'user_id'=>auth()->id()
 
         ]);
-        return redirect('/');
+        return redirect('/pribadi/mine');
     }
     public function mine(Request $request)
     {
