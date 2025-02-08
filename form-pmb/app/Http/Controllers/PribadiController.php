@@ -6,20 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Pribadi;
 use App\Models\Jurusan;
 use App\Models\Jurusan2;
+use App\Models\User;
+use Carbon\Carbon;
 
 class PribadiController extends Controller
 {
     public function create(){
         $jurusanList = Jurusan::all();
         $jurusanList2 = Jurusan2::all();
-        return view('form.pribadi',compact('jurusanList','jurusanList2'));
+        $user = User::where('id', auth()->id())->first();
+        
+        return view('form.pribadi',compact('jurusanList','jurusanList2','user'));
     }
     
     public function store(Request $request){
         
         $request->validate([
             'nama_lengkap'=>'required',
-            'gelombang'=>'required',
             'tempat_lahir'=>'required',
             'jalan_dusun'=>'required',
             'desa_kelurahan'=>'required',
@@ -33,18 +36,28 @@ class PribadiController extends Controller
             'email'=>'required|email',
             'status'=>'required',
             'golongan_darah'=>'required',
-            'no_wa'=>'required|max:13',
+            'no_wa'=>'required|max:13|min:11',
             'kewarganegaraan'=>'required',
             'user_id'=>'unique'
         ]);
         $tahun_akademik = "2425"; 
     $gelombang = str_pad($request->gelombang, 2, '0', STR_PAD_LEFT);
     $bulan = date('m'); // Ambil bulan saat ini
+    $tanggalSekarang = now();
 
-    // Ambil jumlah data sebelumnya untuk mendapatkan no_urut
+    if ($tanggalSekarang->between(Carbon::create(2025, 2, 05), Carbon::create(2025, 3, 11))) {
+        $gelombang = 1;
+    } elseif ($tanggalSekarang->between(Carbon::create(2025, 5, 5), Carbon::create(2025, 6, 11))) {
+        $gelombang = 2;
+    } elseif ($tanggalSekarang->between(Carbon::create(2025, 7, 1), Carbon::create(2025, 8, 5))) {
+        $gelombang = 3;
+    } else {
+        return redirect()->back()->with('error', 'Pendaftaran belum dibuka atau sudah ditutup.');
+    }
+
     $count = Pribadi::whereYear('created_at', date('Y'))
         ->whereMonth('created_at', $bulan)
-        ->where('gelombang', $request->gelombang)
+        ->where('gelombang', $gelombang)
         ->count() + 1;
 
     $no_urut = str_pad($count, 3, '0', STR_PAD_LEFT);
@@ -58,7 +71,7 @@ class PribadiController extends Controller
 
         $query = Pribadi::create([
             'nama_lengkap'=>$request['nama_lengkap'],
-            'gelombang'=>$request['gelombang'],
+            'gelombang'=>$gelombang,
             'tempat_lahir'=>$request['tempat_lahir'],
             'jalan_dusun'=>$request['jalan_dusun'],
             'desa_kelurahan'=>$request['desa_kelurahan'],
@@ -86,12 +99,14 @@ class PribadiController extends Controller
     {
         $jurusan = Jurusan::all();
         $jurusan2 = Jurusan2::all();
+        $user = User::all();
+
         $pribadi = Pribadi::query()
-            ->with('user:id,name')
+            ->with('user:id,name,tl,nisn')
             ->where('user_id',$request->user()->id)
             ->first();
         return view('mine.pribadi',[
-            'pribadi' => $pribadi, 'jurusan'=>$jurusan,'jurusan2'=>$jurusan2
+            'pribadi' => $pribadi, 'jurusan'=>$jurusan,'jurusan2'=>$jurusan2,'user'=>$user
         ]);
     }
     public function update(Request $request, $id)
