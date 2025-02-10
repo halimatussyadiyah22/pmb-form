@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-Identitas pJurusan
+Identitas Peminatan
 @endsection
 
 @section('content')
@@ -9,7 +9,12 @@ Identitas pJurusan
     <!-- Jika tidak ada data pJurusan -->
     @if($pJurusan === null)
         <div class="alert alert-warning">
-            Anda belum mengisi data pJurusan.
+            Anda belum mengisi data Peminatan.
+            <div class="mt-3">
+                <a href="/pJurusan/create">
+                    <button class="btn-primary">Isi Formulir</button>
+                </a>
+            </div>
         </div>
     @else
         @if (session('success'))
@@ -57,8 +62,8 @@ Identitas pJurusan
 <script>
     $(document).ready(function() {
         setTimeout(function() {
-            $(".alert").fadeOut("slow");
-        }, 3000); // Menghilang dalam 3 detik
+            $(".alert-success").fadeOut("slow");
+        }, 3000); // Menghilang dalam 3 detik hanya untuk alert-success
     });
 </script>
 @endpush

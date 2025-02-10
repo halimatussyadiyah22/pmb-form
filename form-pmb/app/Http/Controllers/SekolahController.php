@@ -21,7 +21,7 @@ class SekolahController extends Controller
             'jurusan'=>'required',
             'alamat_sekolah'=>'required',
             'tahun_lulus'=>'required',
-            'no_ijazah'=>'required',
+            'no_ijazah'=>'required|max:15|min:15',
 
         ]);
         

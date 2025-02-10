@@ -1,14 +1,29 @@
 @extends('master')
 
 @section('title')
-Identitas Wali
+Pembayaran
 @endsection
 
 @section('content')
 
     
 
-    @if ($pembayaran)
+            @if($pembayaran === null)
+            <div class="alert alert-warning">
+                Anda belum mengisi Pembayaran.
+                <div class="mt-3">
+                <a href="/pembayaran/create">
+                    <button class="btn-primary">Isi Formulir</button>
+                </a>
+                </div>
+            </div>
+            @else
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
         
             <form action="/pembayaran/{{$pembayaran->id}}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -63,18 +78,7 @@ Identitas Wali
                 </div>
             </form>
 
-    @else
-        @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
 
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
     @endif
 
 @endsection
@@ -82,10 +86,10 @@ Identitas Wali
 @push('scripts')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(pembayaran).ready(function() {
+    $(document).ready(function() {
         setTimeout(function() {
-            $(".alert.success").fadeOut("slow");
-        }, 3000);
+            $(".alert-success").fadeOut("slow");
+        }, 3000); // Menghilang dalam 3 detik hanya untuk alert-success
     });
 </script>
 @endpush

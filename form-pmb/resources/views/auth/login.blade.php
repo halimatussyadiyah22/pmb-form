@@ -38,8 +38,8 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="tl" class="form-label">Date of Birth</label>
-                    <input type="password" id="tl" name="tl" class="form-control @error('tl') is-invalid @enderror" value="{{ old('tl') }}" required>
+                    <label for="tl" class="form-label">Tanggal Lahir</label>
+                    <input type="password" id="tl" name="tl" class="form-control @error('tl') is-invalid @enderror" placeholder="yyyy-mm-dd" value="{{ old('tl') }}" required>
                     @error('tl')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

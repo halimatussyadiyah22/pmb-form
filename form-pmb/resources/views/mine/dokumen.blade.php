@@ -1,15 +1,26 @@
 @extends('master')
 
 @section('title')
-Identitas Wali
+Dokumen
 @endsection
 
 @section('content')
+    @if($dokumen === null)
+    <div class="alert alert-warning">
+        Anda belum mengisi Dokumen.
+        <div class="mt-3">
+        <a href="/dokumen/create">
+            <button class="btn-primary">Isi Formulir</button>
+        </a>
+    </div>
+    </div>
+@else
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
-    
-
-    @if ($dokumen)
-        
             <form action="/dokumen/{{$dokumen->id}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -66,18 +77,7 @@ Identitas Wali
                 </div>
             </form>
 
-    @else
-        @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
 
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
     @endif
 
 @endsection

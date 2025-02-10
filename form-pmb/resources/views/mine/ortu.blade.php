@@ -5,11 +5,16 @@ Identitas Orangtua dan Wali
 @endsection
 
 @section('content')
-<div class="container mt-5">
+<div class="container ">
     <!-- Jika tidak ada data pribadi -->
     @if($ortu === null)
         <div class="alert alert-warning">
             Anda belum mengisi data pribadi.
+            <div class="mt-3">
+            <a href="/ortu/create">
+                <button class="btn-primary">Isi Formulir</button>
+            </a>
+        </div>
         </div>
     @else
         @if (session('success'))
@@ -18,16 +23,13 @@ Identitas Orangtua dan Wali
             </div>
         @endif
 
-        <div class="card">
-            <div class="card-header">
-                <h4>Identitas Orangtua</h4>
-            </div>
-            <div class="card-body">
+       
                 <!-- Form untuk Edit Data Pribadi -->
                 <form action="/ortu/{{$ortu->id}}" method="POST">
                     @csrf
                     @method('PUT')
-
+                    <h5 class="text-primary">Data Ayah</h5>
+                    <hr>
                     <!-- Data Ayah -->
                     <div class="mb-4">
                         <label>Nama Ayah :</label>
@@ -106,7 +108,7 @@ Identitas Orangtua dan Wali
                         <label>No WA Ayah :</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fab fa-whatsapp"></i></span>
-                            <input type="number" name="no_wa_ayah" class="form-control @error('no_wa_ayah') is-invalid @enderror" placeholder="No WA Ayah" value="{{ $ortu->no_wa_ayah }}">
+                            <input minlength="11" maxlength="13" type="number" name="no_wa_ayah" class="form-control @error('no_wa_ayah') is-invalid @enderror" placeholder="No WA Ayah" value="{{ $ortu->no_wa_ayah }}">
                         </div>
                         @error('no_wa_ayah')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -117,14 +119,15 @@ Identitas Orangtua dan Wali
                         <label>Alamat Ayah :</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-home"></i></span>
-                            <input type="text" name="alamat_ayah" class="form-control @error('alamat_ayah') is-invalid @enderror" placeholder="Alamat Ayah" value="{{ $ortu->alamat_ayah }}">
+                            <textarea name="alamat_ayah" class="form-control @error('alamat_ayah') is-invalid @enderror" placeholder="Alamat Ayah" value="" >{{ $ortu->alamat_ayah }}</textarea>
                         </div>
                         @error('alamat_ayah')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    <!-- Data Ibu -->
+                    <h5 class="text-primary">Data Ibu</h5>
+                    <hr>
                     <div class="mb-4">
                         <label>Nama Ibu :</label>
                         <div class="input-group">
@@ -202,7 +205,7 @@ Identitas Orangtua dan Wali
                         <label>No WA Ibu :</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fab fa-whatsapp"></i></span>
-                            <input type="number" name="no_wa_ibu" class="form-control @error('no_wa_ibu') is-invalid @enderror" placeholder="No WA Ibu" value="{{ $ortu->no_wa_ibu }}">
+                            <input type="number" minlength="11" maxlength="13" name="no_wa_ibu" class="form-control @error('no_wa_ibu') is-invalid @enderror" placeholder="No WA Ibu" value="{{ $ortu->no_wa_ibu }}">
                         </div>
                         @error('no_wa_ibu')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -213,7 +216,7 @@ Identitas Orangtua dan Wali
                         <label>Alamat Ibu :</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-home"></i></span>
-                            <input type="text" name="alamat_ibu" class="form-control @error('alamat_ibu') is-invalid @enderror" placeholder="Alamat Ibu" value="{{ $ortu->alamat_ibu }}">
+                            <textarea name="alamat_ibu" class="form-control @error('alamat_ibu') is-invalid @enderror" placeholder="Alamat Ibu" value="">{{ $ortu->alamat_ibu }}</textarea>
                         </div>
                         @error('alamat_ibu')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -227,18 +230,19 @@ Identitas Orangtua dan Wali
 
         <!-- Data Wali -->
         @if($wali !== null)
-            <div class="card mt-4">
-                <div class="card-header">
-                    <h4>Data Wali</h4>
-                </div>
+        
                 <div class="card-body">
                     <form action="/wali/{{$wali->id}}" method="POST">
                         @csrf
                         @method('PUT')
-
+                        <h5 class="text-primary">Data Ayah</h5>
+                        <hr>
                         <div class="mb-4">
                             <label>Nama Wali :</label>
-                            <input type="text" name="nama_wali" class="form-control @error('nama_wali') is-invalid @enderror" placeholder="Nama Wali" value="{{ $wali->nama_wali }}">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" name="nama_wali" class="form-control @error('nama_wali') is-invalid @enderror" placeholder="Nama Wali" value="{{ $wali->nama_wali }}">
+                            </div>
                             @error('nama_wali')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -246,7 +250,10 @@ Identitas Orangtua dan Wali
 
                         <div class="mb-4">
                             <label>Alamat Wali :</label>
-                            <input type="text" name="alamat_wali" class="form-control @error('alamat_wali') is-invalid @enderror" placeholder="Alamat Wali" value="{{ $wali->alamat_wali }}">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                <textarea name="alamat_wali" class="form-control @error('alamat_wali') is-invalid @enderror" placeholder="Alamat Wali" value="">{{ $wali->alamat_wali }}</textarea>
+                            </div>
                             @error('alamat_wali')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -254,7 +261,10 @@ Identitas Orangtua dan Wali
 
                         <div class="mb-4">
                             <label>Pekerjaan Wali :</label>
-                            <input type="text" name="pekerjaan_wali" class="form-control @error('pekerjaan_wali') is-invalid @enderror" placeholder="Pekerjaan Wali" value="{{ $wali->pekerjaan }}">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
+                                <input type="text" name="pekerjaan_wali" class="form-control @error('pekerjaan_wali') is-invalid @enderror" placeholder="Pekerjaan Wali" value="{{ $wali->pekerjaan }}">
+                            </div>
                             @error('pekerjaan_wali')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -262,7 +272,10 @@ Identitas Orangtua dan Wali
 
                         <div class="mb-4">
                             <label>No WA Wali :</label>
-                            <input type="number" name="no_wa_wali" class="form-control @error('no_wa_wali') is-invalid @enderror" placeholder="No WA Wali" value="{{ $wali->no_wa }}">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fab fa-whatsapp"></i></span>
+                                <input minlength="11" maxlength="13" type="number" name="no_wa_wali" class="form-control @error('no_wa_wali') is-invalid @enderror" placeholder="No WA Wali" value="{{ $wali->no_wa }}">
+                            </div>
                             @error('no_wa_wali')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -270,8 +283,7 @@ Identitas Orangtua dan Wali
 
                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                     </form>
-                </div>
-            </div>
+
         @endif
     @endif
 </div>
@@ -281,10 +293,11 @@ Identitas Orangtua dan Wali
 <script>
     $(document).ready(function() {
         setTimeout(function() {
-            $(".alert").fadeOut("slow");
-        }, 3000); // Menghilang dalam 3 detik
+            $(".alert-success").fadeOut("slow");
+        }, 3000); // Menghilang dalam 3 detik hanya untuk alert-success
     });
 </script>
+
 @endpush
 
 @endsection

@@ -38,7 +38,9 @@ class PribadiController extends Controller
             'golongan_darah'=>'required',
             'no_wa'=>'required|max:13|min:11',
             'kewarganegaraan'=>'required',
-            'user_id'=>'unique'
+            'user_id'=>'unique',
+            'jk'=>'required',
+            'no_ktp'=>'required|min:10|max:10'
         ]);
         $tahun_akademik = "2425"; 
     $gelombang = str_pad($request->gelombang, 2, '0', STR_PAD_LEFT);

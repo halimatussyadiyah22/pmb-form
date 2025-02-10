@@ -24,11 +24,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('', function () {
-//     return view('welcome');
-// });
+
+Route::get('/', function () {
+    return view('home');
+})->name('home')->middleware('guest');
 Route::get('/register',[RegisterController::class,'create'])->middleware('guest');
-Route::post('/register',[RegisterController::class,'store'])->middleware('guest');
+Route::post('/register',[RegisterController::class,'store'])->name('register')->middleware('guest');
 Route::get('/login',[LoginController::class,'loginForm'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class,'authenticate'])->middleware('guest');
 Route::post('/logout',LogoutController::class)->middleware('auth');
@@ -38,11 +39,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/dokumen/mine',[DokumenController::class,'mine']);
     Route::get('/ortu/mine',[OrtuController::class,'mine']);
     Route::get('/pribadi/mine',[PribadiController::class,'mine']);
-    // Route::get('/wali/mine',[WaliController::class,'mine']);
+    Route::get('/wali/mine',[WaliController::class,'mine']);
     Route::get('/sekolah/mine',[SekolahController::class,'mine']);
     Route::get('/pembayaran/mine',[PembayaranController::class,'mine']);
     Route::get('/pJurusan/mine',[PjurusanController::class,'mine']);
-
+    Route::get('/home', function () {
+        return view('welcome');
+    });
     Route::resource('pribadi',PribadiController::class);
     Route::resource('ortu',OrtuController::class);
     Route::resource('wali',WaliController::class);

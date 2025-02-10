@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-Formulir Data Pribadi
+Formulir Identitas Pribadi
 @endsection
 @section('content')
 {{-- <div class="containerjustify-content-center align-items-center" style="height: 100vh;"> --}}
@@ -64,7 +64,7 @@ Formulir Data Pribadi
                     <div class="input-group">
                         <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
                         <input type="text" name="tempat_lahir" class="form-control @error('tempat_lahir') is-invalid @enderror" placeholder="Tempat Lahir" value="{{ old('tempat_lahir') }}" >
-                    </div>
+                    
                     @error('tempat_lahir')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-Formulir Data Pribadi
+Formulir Peminatan
 @endsection
 @section('content')
 {{-- <div class="containerjustify-content-center align-items-center" style="height: 100vh;"> --}}

@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-Formulir Data ortu
+Formulir Identitas Sekolah
 @endsection
 @section('content')
 {{-- <div class="containerjustify-content-center align-items-center" style="height: 100vh;"> --}}
@@ -26,10 +26,11 @@ Formulir Data ortu
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-school"></i></span>
                     <input type="text" name="nama_sekolah" class="form-control @error('nama_sekolah') is-invalid @enderror" placeholder="Nama Sekolah" value="{{ old('nama_sekolah') }}">
-                </div>
+                
                 @error('nama_sekolah')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
+            </div>
             </div>
 
             <div class="mb-4">
@@ -37,10 +38,11 @@ Formulir Data ortu
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-book"></i></span>
                     <input type="text" name="jurusan" class="form-control @error('jurusan') is-invalid @enderror" placeholder="Jurusan" value="{{ old('jurusan') }}">
-                </div>
+                
                 @error('jurusan')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
+            </div>
             </div>
 
             <div class="mb-4">
@@ -48,10 +50,11 @@ Formulir Data ortu
             <div class="input-group">
                 <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
                 <textarea name="alamat_sekolah" class="form-control @error('alamat_sekolah') is-invalid @enderror" placeholder="Alamat Sekolah" rows="3">{{ old('alamat_sekolah') }}</textarea>
-            </div>
+            
             @error('alamat_sekolah')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
+        </div>
         </div>
 
             <div class="mb-4">
@@ -59,23 +62,24 @@ Formulir Data ortu
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
                     <input type="number" name="tahun_lulus" class="form-control @error('tahun_lulus') is-invalid @enderror" placeholder="Tahun Lulus" value="{{ old('tahun_lulus') }}">
-                </div>
+                
                 @error('tahun_lulus')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+        </div>
 
             <div class="mb-4">
                 <label>No Ijazah :</label><br>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                    <input type="number" name="no_ijazah" class="form-control @error('no_ijazah') is-invalid @enderror" placeholder="No Ijazah" value="{{ old('no_ijazah') }}">
-                </div>
+                    <input minlength="15" maxlength="15" type="number" name="no_ijazah" class="form-control @error('no_ijazah') is-invalid @enderror" placeholder="No Ijazah" value="{{ old('no_ijazah') }}">
+                
                 @error('no_ijazah')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
-            
+        </div>
             <div class="row justify-content-end">
                 <div class="col-md-5">
                     <button type="submit" class="btn btn-primary w-100">Next</button>

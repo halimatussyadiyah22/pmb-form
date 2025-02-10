@@ -10,6 +10,11 @@ Identitas Wali
     @if($wali  === null)
         <div class="alert alert-warning">
             Anda belum mengisi data pribadi.
+            <div class="mt-3">
+                <a href="/wali/create">
+                    <button class="btn-primary">Isi Formulir</button>
+                </a>
+                </div>
         </div>
     @else
         @if (session('success'))
@@ -32,7 +37,7 @@ Identitas Wali
             </div>
             <div class="mb-4">
                 <label>Alamat :</label><br>
-                <input type="text" name="alamat_wali" class="form-control @error('alamat_wali') is-invalid @enderror" placeholder="Alamat Wali" value="{{ $wali->alamat_wali }}">
+                <textarea name="alamat_wali" class="form-control @error('alamat_wali') is-invalid @enderror" placeholder="Alamat Wali" value="{{ $wali->alamat_wali }}"></textarea>
                 @error('alamat_wali')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -65,8 +70,8 @@ Identitas Wali
 <script>
     $(document).ready(function() {
         setTimeout(function() {
-            $(".alert").fadeOut("slow");
-        }, 3000); // Menghilang dalam 3 detik
+            $(".alert-success").fadeOut("slow");
+        }, 3000); // Menghilang dalam 3 detik hanya untuk alert-success
     });
 </script>
 @endpush

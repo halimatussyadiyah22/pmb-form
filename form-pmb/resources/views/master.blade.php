@@ -21,15 +21,13 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper d-flex flex-column min-vh-100">
   @include('komponen.navbar')
-
   <aside class="main-sidebar sidebar-light elevation-4 bg-light">
-    <a href="" class="brand-link text-center">
+    <a href=""  style="text-decoration: none" class="brand-link text-center">
       <img src="{{asset('storage/internal/stti.png')}}" alt="Logo" class="brand-image">
-      <span class="brand-text font-weight-bold text-dark">PMB</span>
+      <span class="brand-text font-weight-bold text-dark">PMB STTI</span>
     </a>
     @include('komponen.sidebar')
   </aside>
-
   <div class="content-wrapper"> 
     <section class="content-header">
       <div class="container-fluid text-center">
@@ -40,7 +38,6 @@
         </div>
       </div>
     </section>
-
     <section class="content">
       <div class="container-fluid">
         <div class="row justify-content-center">
