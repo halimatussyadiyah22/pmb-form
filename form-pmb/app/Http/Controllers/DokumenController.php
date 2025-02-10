@@ -17,11 +17,11 @@ class DokumenController extends Controller
     
     public function store(Request $request){
         $request->validate([
-            'pas_foto'=>'required',
-            'ktp'=>'required',
-            'kk'=>'required',
-            'ijazah'=>'required',
-            'transkip_nilai'=>'required',
+            'pas_foto'=>'required|image|mimes:jpg,jpeg,png|max:2048',
+            'ktp'=>'required|image|mimes:jpg,jpeg,png|max:2048',
+            'kk'=>'required|image|mimes:jpg,jpeg,png|max:2048',
+            'ijazah'=>'required|image|mimes:jpg,jpeg,png|max:2048',
+            'transkip_nilai'=>'required|image|mimes:jpg,jpeg,png|max:2048',
 
 
         ]);
@@ -65,11 +65,11 @@ class DokumenController extends Controller
     }
     public function update(Request $request, $id) {
         $request->validate([
-            'pas_foto' => 'nullable|file',
-            'ktp' => 'nullable|file',
-            'kk' => 'nullable|file',
-            'ijazah' => 'nullable|file',
-            'transkip_nilai' => 'nullable|file',
+            'pas_foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'ktp' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'kk' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'ijazah' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'transkip_nilai' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ]);
     
         $dokumen = Dokumen::findOrFail($id);

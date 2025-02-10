@@ -27,22 +27,16 @@ class Pribadi extends Model
         'provinsi',
         'agama',
         'no_kk',
+        'no_ktp',
+        'jk',
         'email',
         'status',
         'golongan_darah',
         'no_wa',
         'kewarganegaraan',
-        'jurusan_id',
-        'jurusan2_id',
         'user_id'
     ];
     public function user(){
         return $this->belongsTo(User::class);
-    }
-    public function jurusan():HasMany{
-        return $this->hasMany(Jurusan::class);
-    }
-    public function jurusan2():HasMany{
-        return $this->hasMany(Jurusan2::class);
     }
 }

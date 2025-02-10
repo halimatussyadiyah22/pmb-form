@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Wali;
 use Illuminate\Http\Request;
 use App\Models\Ortu;
 use App\Models\User;
@@ -64,24 +65,31 @@ class OrtuController extends Controller
     }
     public function mine(Request $request)
     {
-            
+        $wali = Wali::where('user_id', $request->user()->id)->first();
+
         $ortu = Ortu::query()
             ->with('user:id,name')
             ->where('user_id',$request->user()->id)
             ->first();
         return view('mine.ortu',[
-            'ortu' => $ortu
+            'ortu' => $ortu, 'wali' => $wali
         ]);
     }
     public function update(Request $request, $id)
     {
         $ortu = Ortu::find($id);
-        
+        // $wali = Wali::find($id);
+
         if ($ortu) {
             $ortu->update($request->all()); 
             return redirect()->back()->with('success', 'Data Ortu berhasil diperbarui.');
 
         }
+        // if ($wali) {
+        //     $wali->update($request->all()); 
+        //     return redirect()->back()->with('success', 'Data Wali berhasil diperbarui.');
+
+        // }
         
         return redirect()->back()->with('error', 'Data Ortu tidak ditemukan.');
     }

@@ -82,14 +82,14 @@ class PribadiController extends Controller
             'provinsi'=>$request['provinsi'],
             'agama'=>$request['agama'],
             'no_kk'=>$request['no_kk'],
+            'no_ktp'=>$request['no_ktp'],
+            'jk'=>$request['jk'],
             'email'=>$request['email'],
             'status'=>$request['status'],
             'golongan_darah'=>$request['golongan_darah'],
             'no_wa'=>$request['no_wa'],
             'kewarganegaraan'=>$request['kewarganegaraan'],
             'no_register' => $no_register,
-            'jurusan_id'=>$request['jurusan1_id'],
-            'jurusan2_id'=>$request['jurusan2_id'],
             'user_id'=>auth()->id()
 
         ]);

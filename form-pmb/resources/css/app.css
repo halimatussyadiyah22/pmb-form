@@ -1,0 +1,10 @@
+.main-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+.content-wrapper {
+    margin-left: 250px; /* Sesuaikan dengan lebar sidebar */
+}

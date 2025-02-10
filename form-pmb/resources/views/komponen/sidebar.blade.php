@@ -23,18 +23,35 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/table" class="nav-link">
+              <a href="/pribadi/mine" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Table</p>
+                <p>Identitas Pribadi</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="/data-table" class="nav-link">
+              <a href="/ortu/mine" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Data Table</p>
+                <p>Identitas Orang Tua</p>
               </a>
             </li>
-
+            <li class="nav-item">
+              <a href="/sekolah/mine" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Identitas Sekolah</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/dokumen/mine" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Dokumen</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/pembayaran/mine" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pembayaran</p>
+              </a>
+            </li>
           </ul>
           
         </li>

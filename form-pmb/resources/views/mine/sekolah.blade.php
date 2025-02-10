@@ -6,7 +6,6 @@ Identitas Wali
 
 @section('content')
 <div class="container">
-    <!-- Jika tidak ada data pribadi -->
     @if($sekolah  === null)
         <div class="alert alert-warning">
             Anda belum mengisi data pribadi.
@@ -18,7 +17,6 @@ Identitas Wali
         </div>
         @endif
 
-        <!-- Form untuk Edit Data Pribadi -->
         <form action="/sekolah/{{$sekolah->id}}" method="POST">
             @csrf
             @method('PUT')

@@ -25,16 +25,15 @@ return new class extends Migration
             $table->string('kabupaten');
             $table->string('provinsi');
             $table->string('agama');
+            $table->bigInteger('no_ktp');
             $table->bigInteger('no_kk');
             $table->string('email')->unique();
+            $table->string('jk');
             $table->string('status');
             $table->string('golongan_darah');
             $table->string('no_wa')->unique();
             $table->string('kewarganegaraan');
-            $table->unsignedBigInteger('jurusan_id');
-            $table->foreign('jurusan_id')->references('id')->on('jurusan')->onDelete('restrict');
-            $table->unsignedBigInteger('jurusan2_id');
-            $table->foreign('jurusan2_id')->references('id')->on('jurusan2')->onDelete('restrict');
+            
             $table->unsignedBigInteger('user_id')->unique();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->timestamps();

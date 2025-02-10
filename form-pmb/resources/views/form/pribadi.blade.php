@@ -40,22 +40,22 @@ Formulir Data Pribadi
                     <input type="number" name="nisn" class="form-control"  value="{{ $user->nisn }}" disabled>
                 </div>
             </div>
-            {{-- <div class="mb-3">
-                <label>Gelombang :</label><br>
+            <div class="mb-3">
+                <label>Jenis Kelamin :</label><br>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
-                    <select name="gelombang" class="form-control @error('gelombang') is-invalid @enderror">
-                        <option value="" disabled selected>Pilih Gelombang</option>
-                        <option value="1" {{ old('gelombang') == '1' ? 'selected' : '' }}>1</option>
-                        <option value="2" {{ old('gelombang') == '2' ? 'selected' : '' }}>2</option>
+                    <select name="jk" class="form-control @error('jk') is-invalid @enderror">
+                        <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                        <option value="Laki-laki" {{ old('jk') == '1' ? 'selected' : '' }}>Laki-laki</option>
+                        <option value="Perempuan" {{ old('jk') == '2' ? 'selected' : '' }}>Perempuan</option>
                     </select>
-                    @error('gelombang')
+                    @error('jk')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
                 </div>
                 
                 
-            </div> --}}
+            </div>
 
             <div class="row">
                 <div class="col-md-6 mb-3">
@@ -193,7 +193,17 @@ Formulir Data Pribadi
                 </div>
                 
             </div>
-
+            <div class="mb-3">
+                <label>NIK :</label><br>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                    <input type="text" name="no_ktp" class="form-control @error('no_ktp') is-invalid @enderror" placeholder="NIK" value="{{ old('no_ktp') }}"  minlength="10" maxlength="10">
+                    @error('no_ktp')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+                </div>
+                
+            </div>
             <div class="mb-3">
                 <label>Email :</label><br>
                 <div class="input-group">
@@ -203,7 +213,6 @@ Formulir Data Pribadi
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
                 </div>
-                
             </div>
 
             <div class="mb-3">
@@ -257,51 +266,7 @@ Formulir Data Pribadi
 
             
 
-            <div class="mb-3">
-                <label>Jurusan Pilihan 1 :</label><br>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-graduation-cap"></i></span>
-                    <select name="jurusan1_id" class="form-control @error('jurusan1_id') is-invalid @enderror">
-                        <option value="" disabled selected>Pilih Jurusan Pilihan 1</option>
-                        @foreach ($jurusanList as $jurusan)
-                            <option value="{{ $jurusan->id }}" {{ old('jurusan1_id') == $jurusan->id ? 'selected' : '' }}>
-                                {{ $jurusan->nama_jurusan }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('jurusan1_id')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-                </div>
-
-
-
-
-
-                
-                
-                
-            </div>
-
-            <div class="mb-5">
-                <label>Jurusan Pilihan  :</label><br>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-graduation-cap"></i></span>
-                    <select name="jurusan2_id" class="form-control @error('jurusan2_id') is-invalid @enderror">
-                        <option value="" disabled selected>Pilih Jurusan Pilihan 2</option>
-                        @foreach ($jurusanList2 as $jurusan)
-                            <option value="{{ $jurusan->id }}" {{ old('jurusan2_id') == $jurusan->id ? 'selected' : '' }}>
-                                {{ $jurusan->nama_jurusan }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('jurusan2_id')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-                </div>
-                
-                
-            </div>
+            
 
             <div class="row justify-content-end">
                 <div class="col-md-5">

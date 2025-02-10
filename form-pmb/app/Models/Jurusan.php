@@ -13,8 +13,8 @@ class Jurusan extends Model
     protected $fillable = [
         'nama_jurusan'
     ];
-    public function pribadi(){
-        return $this->hasOne(Pribadi::class,'jurusan_id');
+    public function Pjurusan(){
+        return $this->hasOne(Pjurusan::class,'jurusan_id');
     }
     
 }
