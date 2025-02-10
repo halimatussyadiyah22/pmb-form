@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-Formulir Data ortu
+Formulir Dokumen
 @endsection
 @section('content')
 {{-- <div class="containerjustify-content-center align-items-center" style="height: 100vh;"> --}}
@@ -79,7 +79,7 @@ Formulir Data ortu
 
         <div class="row justify-content-end">
             <div class="col-md-5">
-                <button type="submit" class="btn btn-primary w-100">Next</button>
+                <button type="submit" class="btn btn-primary w-100">Simpan</button>
             </div>
         </div>
             

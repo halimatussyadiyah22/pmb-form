@@ -271,8 +271,12 @@
                         </div>
                     </div>
     
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </form>
+                    <div class="row justify-content-end">
+            <div class="col-md-5">
+                <button type="submit" class="btn btn-primary w-100">Simpan</button>
+            </div>
+        </div>
+                    </form>
             </div>
 
     

@@ -1,4 +1,4 @@
-@extends('master')
+<!-- @extends('master')
 
 @section('title')
 Identitas Wali
@@ -6,7 +6,6 @@ Identitas Wali
 
 @section('content')
 <div class="container">
-    <!-- Jika tidak ada data pribadi -->
     @if($wali  === null)
         <div class="alert alert-warning">
             Anda belum mengisi data pribadi.
@@ -23,7 +22,6 @@ Identitas Wali
         </div>
         @endif
 
-        <!-- Form untuk Edit Data Pribadi -->
         <form action="/wali/{{$wali->id}}" method="POST">
             @csrf
             @method('PUT')
@@ -71,7 +69,7 @@ Identitas Wali
     $(document).ready(function() {
         setTimeout(function() {
             $(".alert-success").fadeOut("slow");
-        }, 3000); // Menghilang dalam 3 detik hanya untuk alert-success
+        }, 3000); 
     });
 </script>
-@endpush
+@endpush -->

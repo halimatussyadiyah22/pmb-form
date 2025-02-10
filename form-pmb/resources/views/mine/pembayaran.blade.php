@@ -72,10 +72,12 @@ Pembayaran
 
                 @endforeach
 
-                <div class="d-flex justify-content-between mt-4">
-                    <a href="{{ url('/') }}" class="btn btn-secondary">Kembali</a>
-                    <button type="submit" class="btn btn-primary">Update pembayaran</button>
+                <div class="row justify-content-end">
+                    <div class="col-md-5">
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                    </div>
                 </div>
+
             </form>
 
 

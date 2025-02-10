@@ -223,7 +223,11 @@ Identitas Orangtua dan Wali
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                    <div class="row justify-content-end">
+                        <div class="col-md-5">
+                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -281,7 +285,12 @@ Identitas Orangtua dan Wali
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        <div class="row justify-content-end">
+                            <div class="col-md-5">
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                            </div>
+                        </div>
+
                     </form>
 
         @endif

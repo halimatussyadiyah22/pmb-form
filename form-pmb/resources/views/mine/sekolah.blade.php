@@ -63,9 +63,12 @@ Identitas Sekolah
                 @enderror
             </div>
 
-            
+            <div class="row justify-content-end">
+                <div class="col-md-5">
+                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                </div>
+            </div>
 
-            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
         </form>
     @endif
 </div>

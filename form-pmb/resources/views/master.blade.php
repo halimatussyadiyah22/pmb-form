@@ -22,12 +22,15 @@
 <div class="wrapper d-flex flex-column min-vh-100">
   @include('komponen.navbar')
   <aside class="main-sidebar sidebar-light elevation-4 bg-light">
-    <a href=""  style="text-decoration: none" class="brand-link text-center">
-      <img src="{{asset('storage/internal/stti.png')}}" alt="Logo" class="brand-image">
-      <span class="brand-text font-weight-bold text-dark">PMB STTI</span>
+    <a href="" style="text-decoration: none" class="brand-link text-center">
+        <img src="{{asset('storage/internal/stti.png')}}" alt="Logo" class="brand-image">
+        <span class="brand-text font-weight-bold text-dark">PMB STTI</span>
     </a>
-    @include('komponen.sidebar')
-  </aside>
+    
+    @if(Auth::check()) <!-- Cek apakah pengguna sudah login -->
+        @include('komponen.sidebar')
+    @endif
+</aside>
   <div class="content-wrapper"> 
     <section class="content-header">
       <div class="container-fluid text-center">
@@ -65,8 +68,7 @@
   </div> 
 
   <footer class="main-footer mt-auto text-center py-3 bg-light text-primary">
-    <strong>&copy; 2014-2021 <a href="https://adminlte.io" class="text-primary">AdminLTE.io</a>.</strong> All rights reserved.
-    <div class="mt-1">Version 3.2.0</div>
+    <strong>&copy; 2025 Sekolah Tinggi Teknologi Indonesia.</strong>
   </footer>
 </div>
 

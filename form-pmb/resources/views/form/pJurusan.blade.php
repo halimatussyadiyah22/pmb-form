@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-Formulir Peminatan
+Peminatan
 @endsection
 @section('content')
 {{-- <div class="containerjustify-content-center align-items-center" style="height: 100vh;"> --}}
@@ -60,10 +60,10 @@ Formulir Peminatan
             </div>
 
             <div class="row justify-content-end">
-                <div class="col-md-5">
-                    <button type="submit" class="btn btn-primary w-100">Next</button>
-                </div>
+            <div class="col-md-5">
+                <button type="submit" class="btn btn-primary w-100">Simpan</button>
             </div>
+        </div>
             
         </form>
 

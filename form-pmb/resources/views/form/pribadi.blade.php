@@ -269,10 +269,10 @@ Formulir Identitas Pribadi
             
 
             <div class="row justify-content-end">
-                <div class="col-md-5">
-                    <button type="submit" class="btn btn-primary w-100">Next</button>
-                </div>
+            <div class="col-md-5">
+                <button type="submit" class="btn btn-primary w-100">Simpan</button>
             </div>
+        </div>
             
         </form>
 
